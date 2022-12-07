@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NuevoAlumno">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Matricula:" />
+
+    <EditText
+        android:id="@+id/txtMatricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="40dp"
+        android:ems="9"
+        android:inputType="textPersonName"
+        android:text="Matricula" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="90dp"
+        android:text="Nombre:" />
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="110dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nombre" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="160dp"
+        android:text="Apellido Paterno:" />
+    <EditText
+        android:id="@+id/txtApellidoP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="180dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Apellido Paterno" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="30dp"
+        android:text="Apellido Materno:" />
+    <EditText
+        android:id="@+id/txtApellidoM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="250dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Apellido Materno" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="380dp"
+        android:layout_marginTop="20dp"
+        android:text="Sexo:" />
+
+    <RadioButton
+        android:id="@+id/rbtnHombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="380dp"
+        android:layout_marginTop="30dp"
+        android:text="Hombre" />
+    <RadioButton
+        android:id="@+id/rbtnMujer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="380dp"
+        android:text="Mujer" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="510dp"
+        android:layout_marginTop="20dp"
+        android:text="Fecha de Nacimiento:" />
+
+    <EditText
+        android:id="@+id/tempFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="510dp"
+        android:layout_marginTop="40dp"
+        android:ems="8"
+        android:inputType="textPersonName"
+        android:text="FEcha de Nac" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="380dp"
+        android:layout_marginTop="100dp"
+        android:text="Imagen de perfil:" />
+
+    <ImageButton
+        android:id="@+id/imgView"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="430dp"
+        android:layout_marginTop="125dp"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="470dp"
+        android:ems="8"
+        android:text="GAURDAR" />
+</RelativeLayout>
