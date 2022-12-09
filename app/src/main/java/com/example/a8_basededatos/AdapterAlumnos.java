@@ -39,9 +39,10 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.MyViewHo
 
         String nombre           = alumno.getNombre();
         String apellidoPaterno  = alumno.getApellidoPaterno();
+        String apellidoMaterno  = alumno.getApellidoMaterno();
         int matricula           = alumno.getMatricula();
 
-        myViewHolder.nombre.setText(nombre + " " + apellidoPaterno);
+        myViewHolder.nombre.setText(nombre + " " + apellidoPaterno + " " + apellidoMaterno);
         myViewHolder.matricula.setText(String.valueOf(matricula));
     }
 

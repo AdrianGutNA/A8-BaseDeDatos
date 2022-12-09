@@ -11,17 +11,19 @@ public class Alumno {
 
     private long id;
 
-    public Alumno(String nombre, int matricula, String apellidoPaterno) {
+    public Alumno(String nombre, int matricula, String apellidoPaterno, String apellidoMaterno) {
         this.nombre = nombre;
         this.matricula = matricula;
         this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
     }
 
-    public Alumno(String nombre, int matricula,String apellidoPaterno, long id) {
+    public Alumno(String nombre, int matricula,String apellidoPaterno,String apellidoMaterno, long id) {
         this.id = id;
         this.nombre = nombre;
         this.matricula = matricula;
         this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
     }
 
     public long getId() {
@@ -62,7 +64,7 @@ public class Alumno {
     @Override
     public String toString() {
         return "Alumno{" +
-                "nombre='" + nombre + " "+ apellidoPaterno+ '\'' +
+                "nombre='" + nombre + " "+ apellidoPaterno+ " "+ apellidoMaterno+ '\'' +
                 ", matricula=" + matricula +
                 '}';
     }

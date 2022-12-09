@@ -15,7 +15,7 @@ public class daoAlumnos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key autoincrement, nombre text, matricula integer, apellidoPaterno text)", NOMBRE_TABLA));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key autoincrement, nombre text, matricula integer, apellidoPaterno text, apellidoMaterno text)", NOMBRE_TABLA));
     }
 
     @Override

@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("nombre", alumnoSeleccionada.getNombre());
                 intent.putExtra("matricula", alumnoSeleccionada.getMatricula());
                 intent.putExtra("apellidoPaterno", alumnoSeleccionada.getApellidoPaterno());
+                intent.putExtra("apellidoMaterno", alumnoSeleccionada.getApellidoMaterno());
 
                 startActivity(intent);
             }
