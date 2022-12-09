@@ -32,6 +32,8 @@ public class AlumnoController {
         valoresParaInsertar.put("matricula", alumno.getMatricula());
         valoresParaInsertar.put("apellidoPaterno", alumno.getApellidoPaterno());
         valoresParaInsertar.put("apellidoMaterno", alumno.getApellidoMaterno());
+        valoresParaInsertar.put("sexo", alumno.getSexo());
+        valoresParaInsertar.put("fechaNacimiento", alumno.getFechaNacimiento());
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
@@ -42,6 +44,8 @@ public class AlumnoController {
         valoresParaActualizar.put("matricula", alumnoEditada.getMatricula());
         valoresParaActualizar.put("apellidoPaterno", alumnoEditada.getApellidoPaterno());
         valoresParaActualizar.put("apellidoMaterno", alumnoEditada.getApellidoMaterno());
+        valoresParaActualizar.put("sexo", alumnoEditada.getSexo());
+        valoresParaActualizar.put("fechaNacimiento", alumnoEditada.getFechaNacimiento());
 
         String campoParaActualizar = "id = ?";
         String[] argumentosParaActualizar = {String.valueOf(alumnoEditada.getId())};
@@ -54,7 +58,7 @@ public class AlumnoController {
 
         SQLiteDatabase baseDeDatos = daoAlumnos.getReadableDatabase();
 
-        String[] columnasAConsultar = {"nombre", "matricula","apellidoPaterno","apellidoMaterno", "id"};
+        String[] columnasAConsultar = {"nombre", "matricula","apellidoPaterno","apellidoMaterno","sexo","fechaNacimiento", "id"};
         Cursor cursor = baseDeDatos.query(
                 NOMBRE_TABLA,
                 columnasAConsultar,
@@ -77,9 +81,11 @@ public class AlumnoController {
             int matriculaBD = cursor.getInt(1);
             String apellidoPaternoBD = cursor.getString(2);
             String apellidoMaternoBD = cursor.getString(3);
-            long idAlumno = cursor.getLong(4);
+            String sexoBD = cursor.getString(4);
+            String fechaNacimientoBD = cursor.getString(5);
+            long idAlumno = cursor.getLong(6);
 
-            Alumno alumnoObtenidaDeBD = new Alumno(nombreBD, matriculaBD,apellidoPaternoBD,apellidoMaternoBD, idAlumno);
+            Alumno alumnoObtenidaDeBD = new Alumno(nombreBD, matriculaBD,apellidoPaternoBD,apellidoMaternoBD,sexoBD,fechaNacimientoBD, idAlumno);
             alumnos.add(alumnoObtenidaDeBD);
         } while (cursor.moveToNext());
 

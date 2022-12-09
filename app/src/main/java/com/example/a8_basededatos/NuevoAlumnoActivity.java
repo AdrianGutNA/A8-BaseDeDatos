@@ -14,7 +14,7 @@ import com.example.a8_basededatos.modelos.Alumno;
 
 public class NuevoAlumnoActivity extends AppCompatActivity {
 
-    private Button              btnAgregarMascota;
+    private Button              btnGuardar;
     private EditText            txtMatricula;
     private EditText            txtNombre;
     private EditText            txtApellidoPaterno;
@@ -33,15 +33,15 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
         txtMatricula            = findViewById(R.id.txtMatricula);
         txtMatricula            = findViewById(R.id.txtMatricula);
         txtApellidoPaterno      = findViewById(R.id.txtApellidoP);
-        txtApellidoMaterno     = findViewById(R.id.txtApellidoM);
+        txtApellidoMaterno      = findViewById(R.id.txtApellidoM);
         txtSexo                 = findViewById(R.id.txtSexo);
         txtFechaNacimiento      = findViewById(R.id.txtFechaNacimiento);
-        btnAgregarMascota       = findViewById(R.id.btnGuardar);
+        btnGuardar              = findViewById(R.id.btnGuardar);
 
 
         alumnoController = new AlumnoController(NuevoAlumnoActivity.this);
 
-        btnAgregarMascota.setOnClickListener(new View.OnClickListener() {
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -49,10 +49,14 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
                 txtMatricula.setError(null);
                 txtApellidoPaterno.setError(null);
                 txtApellidoMaterno.setError(null);
+                txtSexo.setError(null);
+                txtFechaNacimiento.setError(null);
 
                 String nombre = txtNombre.getText().toString();
                 String apellidoPaterno = txtApellidoPaterno.getText().toString();
                 String apellidoMaterno = txtApellidoMaterno.getText().toString();
+                String sexo = txtSexo.getText().toString();
+                String fechaNacimiento = txtFechaNacimiento.getText().toString();
                 String edadComoCadena = txtMatricula.getText().toString();
 
                 if ("".equals(nombre)) {
@@ -79,7 +83,7 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
                     txtMatricula.requestFocus();
                     return;
                 }
-                Alumno nuevaAlumno = new Alumno(nombre, matricula,apellidoPaterno,apellidoMaterno);
+                Alumno nuevaAlumno = new Alumno(nombre, matricula,apellidoPaterno,apellidoMaterno,sexo,fechaNacimiento);
                 long id = alumnoController.nuevoAlumno(nuevaAlumno);
                 if (id == -1) {
                     Toast.makeText(NuevoAlumnoActivity.this, "Error al guardar. Intenta de nuevo", Toast.LENGTH_SHORT).show();

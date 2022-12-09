@@ -40,10 +40,14 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.MyViewHo
         String nombre           = alumno.getNombre();
         String apellidoPaterno  = alumno.getApellidoPaterno();
         String apellidoMaterno  = alumno.getApellidoMaterno();
+        String sexo             = alumno.getSexo();
+        String fechaNacimiento  = alumno.getFechaNacimiento();
         int matricula           = alumno.getMatricula();
 
         myViewHolder.nombre.setText(nombre + " " + apellidoPaterno + " " + apellidoMaterno);
         myViewHolder.matricula.setText(String.valueOf(matricula));
+        myViewHolder.sexo.setText(sexo);
+        myViewHolder.fechaNacimiento.setText(fechaNacimiento);
     }
 
     @Override
@@ -52,12 +56,14 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.MyViewHo
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nombre, matricula;
+        TextView nombre, matricula, sexo, fechaNacimiento;
 
         MyViewHolder(View itemView) {
             super(itemView);
             this.nombre = itemView.findViewById(R.id.txtvNombreCompleto);
             this.matricula = itemView.findViewById(R.id.txtvMatricula);
+            this.sexo = itemView.findViewById(R.id.txtvSexo);
+            this.fechaNacimiento = itemView.findViewById(R.id.txtvFechaNacimiento);
         }
     }
 }

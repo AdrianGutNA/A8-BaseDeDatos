@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("matricula", alumnoSeleccionada.getMatricula());
                 intent.putExtra("apellidoPaterno", alumnoSeleccionada.getApellidoPaterno());
                 intent.putExtra("apellidoMaterno", alumnoSeleccionada.getApellidoMaterno());
-
+                intent.putExtra("sexo", alumnoSeleccionada.getSexo());
+                intent.putExtra("fechaNacimiento", alumnoSeleccionada.getFechaNacimiento());
                 startActivity(intent);
             }
 

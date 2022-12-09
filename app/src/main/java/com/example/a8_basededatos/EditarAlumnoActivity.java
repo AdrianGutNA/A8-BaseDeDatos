@@ -44,14 +44,17 @@ public class EditarAlumnoActivity extends AppCompatActivity {
         int     matriculaAlumno     = extras.getInt("matricula");
         String  apellidoPaterno     = extras.getString("apellidoPaterno");
         String  apellidoMaterno     = extras.getString("apellidoMaterno");
-
-        alumno                      = new Alumno(nombreAlumno, matriculaAlumno, apellidoPaterno,apellidoMaterno, idAlumno);
+        String  sexo                = extras.getString("sexo");
+        String  fechaNacimiento     = extras.getString("fechaNacimiento");
+        alumno                      = new Alumno(nombreAlumno, matriculaAlumno, apellidoPaterno,apellidoMaterno, sexo, fechaNacimiento, idAlumno);
 
 
         txtMatricula                = findViewById(R.id.txtMatricula);
         txtNombre                   = findViewById(R.id.txtNombre);
         txtApellidoPaterno          = findViewById(R.id.txtApellidoP);
-        txtApellidoMaterno         = findViewById(R.id.txtApellidoM);
+        txtApellidoMaterno          = findViewById(R.id.txtApellidoM);
+        txtSexo                     = findViewById(R.id.txtSexo);
+        txtFechaNacimiento          = findViewById(R.id.txtFechaNacimiento);
         btnGuardarCambios           = findViewById(R.id.btnGuardar);
 
 
@@ -59,6 +62,8 @@ public class EditarAlumnoActivity extends AppCompatActivity {
         txtNombre.setText(alumno.getNombre());
         txtApellidoPaterno.setText(alumno.getApellidoPaterno());
         txtApellidoMaterno.setText(alumno.getApellidoMaterno());
+        txtSexo.setText(alumno.getSexo());
+        txtFechaNacimiento.setText(alumno.getFechaNacimiento());
 
         btnGuardarCambios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,11 +73,15 @@ public class EditarAlumnoActivity extends AppCompatActivity {
                 txtMatricula.setError(null);
                 txtApellidoPaterno.setError(null);
                 txtApellidoMaterno.setError(null);
+                txtSexo.setError(null);
+                txtFechaNacimiento.setError(null);
 
                 String nuevoNombre          = txtNombre.getText().toString();
                 String nuevaMatricula1      = txtMatricula.getText().toString();
                 String nuevoApellidoPaterno = txtApellidoPaterno.getText().toString();
                 String nuevoApellidoMaterno = txtApellidoMaterno.getText().toString();
+                String sexo                 = txtSexo.getText().toString();
+                String fechaNacimiento      = txtFechaNacimiento.getText().toString();
 
                 if (nuevaMatricula1.isEmpty()) {
                     txtMatricula.setError("Escribe la matricula");
@@ -99,7 +108,7 @@ public class EditarAlumnoActivity extends AppCompatActivity {
                     return;
                 }
 
-                Alumno alumnoConNuevosCambios = new Alumno(nuevoNombre, nuevaMatricula,nuevoApellidoPaterno,nuevoApellidoMaterno, alumno.getId());
+                Alumno alumnoConNuevosCambios = new Alumno(nuevoNombre, nuevaMatricula,nuevoApellidoPaterno,nuevoApellidoMaterno,sexo,fechaNacimiento, alumno.getId());
                 int filasModificadas = alumnoController.guardarCambios(alumnoConNuevosCambios);
                 if (filasModificadas != 1) {
 

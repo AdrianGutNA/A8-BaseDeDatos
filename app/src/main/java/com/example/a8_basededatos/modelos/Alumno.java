@@ -11,19 +11,23 @@ public class Alumno {
 
     private long id;
 
-    public Alumno(String nombre, int matricula, String apellidoPaterno, String apellidoMaterno) {
+    public Alumno(String nombre, int matricula, String apellidoPaterno, String apellidoMaterno, String sexo, String fechaNacimiento) {
         this.nombre = nombre;
         this.matricula = matricula;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
+        this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Alumno(String nombre, int matricula,String apellidoPaterno,String apellidoMaterno, long id) {
+    public Alumno(String nombre, int matricula,String apellidoPaterno,String apellidoMaterno,String sexo,String fechaNacimiento, long id) {
         this.id = id;
         this.nombre = nombre;
         this.matricula = matricula;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
+        this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public long getId() {
@@ -65,7 +69,9 @@ public class Alumno {
     public String toString() {
         return "Alumno{" +
                 "nombre='" + nombre + " "+ apellidoPaterno+ " "+ apellidoMaterno+ '\'' +
-                ", matricula=" + matricula +
+                ", matricula=" + matricula + '\'' +
+                ", sexo=" + sexo + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
                 '}';
     }
 }
