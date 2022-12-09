@@ -25,49 +25,39 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Alumno> listaDeAlumnos;
     private RecyclerView recyclerView;
-    private AdapterAlumnos adaptadorMascotas;
-    private AlumnoController mascotasController;
-    private FloatingActionButton fabAgregarMascota;
+    private AdapterAlumnos adaptadorAlumnos;
+    private AlumnoController alumnosController;
+    private FloatingActionButton fabNuevoAlumno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Inicio de la app");
 
-        mascotasController = new AlumnoController(MainActivity.this);
+        alumnosController = new AlumnoController(MainActivity.this);
 
         recyclerView = findViewById(R.id.recyclerAlumnos);
-        fabAgregarMascota = findViewById(R.id.btnNuevoAlumno);
+        fabNuevoAlumno = findViewById(R.id.btnNuevoAlumno);
 
-        recyclerView.setHasFixedSize(true);
-        Configuration orientation = new Configuration();
-
-        if(this.recyclerView.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            recyclerView.setLayoutManager(new GridLayoutManager(this,1));
-        }
-        else if(this.recyclerView.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        };
         listaDeAlumnos = new ArrayList<>();
-        adaptadorMascotas = new AdapterAlumnos(listaDeAlumnos);
+        adaptadorAlumnos = new AdapterAlumnos(listaDeAlumnos);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adaptadorMascotas);
+        recyclerView.setAdapter(adaptadorAlumnos);
 
-        refrescarListaDeMascotas();
+        actualizarListaAlumnos();
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 Alumno alumnoSeleccionada = listaDeAlumnos.get(position);
                 Intent intent = new Intent(MainActivity.this, EditarAlumnoActivity.class);
-                intent.putExtra("idMascota", alumnoSeleccionada.getId());
-                intent.putExtra("nombreMascota", alumnoSeleccionada.getNombre());
-                intent.putExtra("edadMascota", alumnoSeleccionada.getEdad());
+                intent.putExtra("id", alumnoSeleccionada.getId());
+                intent.putExtra("nombre", alumnoSeleccionada.getNombre());
+                intent.putExtra("matricula", alumnoSeleccionada.getMatricula());
                 intent.putExtra("apellidoPaterno", alumnoSeleccionada.getApellidoPaterno());
 
                 startActivity(intent);
@@ -81,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Sí, eliminar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                mascotasController.eliminarMascota(alumnoParaEliminar);
-                                refrescarListaDeMascotas();
+                                alumnosController.eliminarAlumno(alumnoParaEliminar);
+                                actualizarListaAlumnos();
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -92,38 +82,19 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .setTitle("Confirmar")
-                        .setMessage("¿Eliminar a la mascota " + alumnoParaEliminar.getNombre() + "?")
+                        .setMessage("¿Eliminar al alumno " + alumnoParaEliminar.getNombre() + "?")
                         .create();
                 dialog.show();
 
             }
         }));
 
-        fabAgregarMascota.setOnClickListener(new View.OnClickListener()
+        fabNuevoAlumno.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NuevoAlumnoActivity.class);
                 startActivity(intent);
-            }
-        });
-
-
-        fabAgregarMascota.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Acerca de")
-                        .setMessage("CRUD de Android con SQLite creado por AdrianGutNa ")
-                        .setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogo, int which) {
-                                dialogo.dismiss();
-                            }
-                        })
-                        .create()
-                        .show();
-                return false;
             }
         });
 
@@ -133,14 +104,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        refrescarListaDeMascotas();
+        actualizarListaAlumnos();
     }
 
-    public void refrescarListaDeMascotas()
+    public void actualizarListaAlumnos()
     {
-        if (adaptadorMascotas == null) return;
-        listaDeAlumnos = mascotasController.obtenerMascotas();
-        adaptadorMascotas.setListaDeMascotas(listaDeAlumnos);
-        adaptadorMascotas.notifyDataSetChanged();
+        if (adaptadorAlumnos == null) return;
+        listaDeAlumnos = alumnosController.obtenerAlumnos();
+        adaptadorAlumnos.setListaDeMascotas(listaDeAlumnos);
+        adaptadorAlumnos.notifyDataSetChanged();
     }
 }

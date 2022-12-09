@@ -28,8 +28,8 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View filaMascota = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
-        return new MyViewHolder(filaMascota);
+        View filaAlumno = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
+        return new MyViewHolder(filaAlumno);
     }
 
     @Override
@@ -37,12 +37,12 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.MyViewHo
 
         Alumno alumno           = listaDeAlumnos.get(i);
 
-        String nombreMascota    = alumno.getNombre();
+        String nombre           = alumno.getNombre();
         String apellidoPaterno  = alumno.getApellidoPaterno();
-        int edadMascota         = alumno.getEdad();
+        int matricula           = alumno.getMatricula();
 
-        myViewHolder.nombre.setText(nombreMascota + " " + apellidoPaterno);
-        myViewHolder.edad.setText(String.valueOf(edadMascota));
+        myViewHolder.nombre.setText(nombre + " " + apellidoPaterno);
+        myViewHolder.matricula.setText(String.valueOf(matricula));
     }
 
     @Override
@@ -51,12 +51,12 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.MyViewHo
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nombre, edad;
+        TextView nombre, matricula;
 
         MyViewHolder(View itemView) {
             super(itemView);
             this.nombre = itemView.findViewById(R.id.txtvNombreCompleto);
-            this.edad = itemView.findViewById(R.id.txtvMatricula);
+            this.matricula = itemView.findViewById(R.id.txtvMatricula);
         }
     }
 }

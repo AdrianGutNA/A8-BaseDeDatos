@@ -14,35 +14,30 @@ import com.example.a8_basededatos.modelos.Alumno;
 
 public class NuevoAlumnoActivity extends AppCompatActivity {
 
-    private EditText etNombre, etEdad;
-
-    private Button btnAgregarMascota;
-    private EditText txtMatricula;
-    private EditText txtNombre;
-    private EditText txtApellidoPaterno;
-    private EditText txtAapellidoMaterno;
-    private EditText txtSexo;
-    private EditText txtFechaNacimiento;
-
-    private AlumnoController alumnoController;
+    private Button              btnAgregarMascota;
+    private EditText            txtMatricula;
+    private EditText            txtNombre;
+    private EditText            txtApellidoPaterno;
+    private EditText            txtAapellidoMaterno;
+    private EditText            txtSexo;
+    private EditText            txtFechaNacimiento;
+    private AlumnoController    alumnoController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_nuevo_alumno);
         getSupportActionBar().setTitle("Nuevo Alumno");
 
-        setContentView(R.layout.activity_nuevo_alumno);
-
-        etNombre                = findViewById(R.id.txtNombre);
-        etEdad                  = findViewById(R.id.txtMatricula);
-        btnAgregarMascota       = findViewById(R.id.btnGuardar);
-
-        txtMatricula            = findViewById(R.id.txtMatricula);
         txtNombre               = findViewById(R.id.txtNombre);
+        txtMatricula            = findViewById(R.id.txtMatricula);
+        txtMatricula            = findViewById(R.id.txtMatricula);
         txtApellidoPaterno      = findViewById(R.id.txtApellidoP);
         txtAapellidoMaterno     = findViewById(R.id.txtApellidoM);
         txtSexo                 = findViewById(R.id.txtSexo);
         txtFechaNacimiento      = findViewById(R.id.txtFechaNacimiento);
+        btnAgregarMascota       = findViewById(R.id.btnGuardar);
+
 
         alumnoController = new AlumnoController(NuevoAlumnoActivity.this);
 
@@ -50,17 +45,17 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                etNombre.setError(null);
-                etEdad.setError(null);
+                txtNombre.setError(null);
+                txtMatricula.setError(null);
                 txtApellidoPaterno.setError(null);
 
-                String nombre = etNombre.getText().toString();
+                String nombre = txtNombre.getText().toString();
                 String apellidoPaterno = txtApellidoPaterno.getText().toString();
-                String edadComoCadena = etEdad.getText().toString();
+                String edadComoCadena = txtMatricula.getText().toString();
 
                 if ("".equals(nombre)) {
-                    etNombre.setError("Escribe el nombre del Alumno");
-                    etNombre.requestFocus();
+                    txtNombre.setError("Escribe el nombre del Alumno");
+                    txtNombre.requestFocus();
                     return;
                 }
                 if ("".equals(apellidoPaterno)) {
@@ -69,21 +64,21 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
                     return;
                 }
                 if ("".equals(edadComoCadena)) {
-                    etEdad.setError("Escribe la edad del alumno");
-                    etEdad.requestFocus();
+                    txtMatricula.setError("Escribe la matricula del alumno");
+                    txtMatricula.requestFocus();
                     return;
                 }
 
-                int edad;
+                int matricula;
                 try {
-                    edad = Integer.parseInt(etEdad.getText().toString());
+                    matricula = Integer.parseInt(txtMatricula.getText().toString());
                 } catch (NumberFormatException e) {
-                    etEdad.setError("Escribe un número");
-                    etEdad.requestFocus();
+                    txtMatricula.setError("Escribe un número");
+                    txtMatricula.requestFocus();
                     return;
                 }
-                Alumno nuevaAlumno = new Alumno(nombre, edad,apellidoPaterno);
-                long id = alumnoController.nuevaMascota(nuevaAlumno);
+                Alumno nuevaAlumno = new Alumno(nombre, matricula,apellidoPaterno);
+                long id = alumnoController.nuevoAlumno(nuevaAlumno);
                 if (id == -1) {
                     Toast.makeText(NuevoAlumnoActivity.this, "Error al guardar. Intenta de nuevo", Toast.LENGTH_SHORT).show();
                 } else {

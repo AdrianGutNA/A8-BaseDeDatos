@@ -8,20 +8,19 @@ public class Alumno {
     private String apellidoMaterno;
     private String sexo;
     private String fechaNacimiento;
-    private int edad;
 
     private long id;
 
-    public Alumno(String nombre, int edad, String apellidoPaterno) {
+    public Alumno(String nombre, int matricula, String apellidoPaterno) {
         this.nombre = nombre;
-        this.edad = edad;
+        this.matricula = matricula;
         this.apellidoPaterno = apellidoPaterno;
     }
 
-    public Alumno(String nombre, int edad,String apellidoPaterno, long id) {
-        this.nombre = nombre;
-        this.edad = edad;
+    public Alumno(String nombre, int matricula,String apellidoPaterno, long id) {
         this.id = id;
+        this.nombre = nombre;
+        this.matricula = matricula;
         this.apellidoPaterno = apellidoPaterno;
     }
 
@@ -37,31 +36,34 @@ public class Alumno {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public int getMatricula() {
+        return matricula;
     }
 
     public String getApellidoPaterno() {
         return apellidoPaterno;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public String getApellidoMaterno()
+    {
+        return apellidoMaterno;
+    }
+
+    public String getSexo()
+    {
+        return sexo;
+    }
+
+    public String getFechaNacimiento()
+    {
+        return fechaNacimiento;
     }
 
     @Override
     public String toString() {
         return "Alumno{" +
                 "nombre='" + nombre + " "+ apellidoPaterno+ '\'' +
-                ", edad=" + edad +
+                ", matricula=" + matricula +
                 '}';
     }
 }

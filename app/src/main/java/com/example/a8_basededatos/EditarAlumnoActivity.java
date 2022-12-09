@@ -13,10 +13,17 @@ import com.example.a8_basededatos.controllers.AlumnoController;
 import com.example.a8_basededatos.modelos.Alumno;
 
 public class EditarAlumnoActivity extends AppCompatActivity {
-    private EditText etEditarNombre, etEditarEdad, txtEditarApellidoP;
-    private Button btnGuardarCambios;
-    private Alumno alumno;
-    private AlumnoController mascotasController;
+
+    private EditText    txtMatricula;
+    private EditText    txtNombre;
+    private EditText    txtApellidoPaterno;
+    private EditText    txtAapellidoMaterno;
+    private EditText    txtSexo;
+    private EditText    txtFechaNacimiento;
+    private Button      btnGuardarCambios;
+    private Alumno      alumno;
+
+    private AlumnoController alumnoController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,68 +37,66 @@ public class EditarAlumnoActivity extends AppCompatActivity {
             return;
         }
 
-        mascotasController      = new AlumnoController(EditarAlumnoActivity.this);
+        alumnoController            = new AlumnoController(EditarAlumnoActivity.this);
 
-        long idMascota          = extras.getLong("idMascota");
-        String nombreMascota    = extras.getString("nombreMascota");
-        int edadMascota         = extras.getInt("edadMascota");
-        String apellidoPaterno    = extras.getString("apellidoPaterno");
+        long    idAlumno            = extras.getLong("id");
+        String  nombreAlumno        = extras.getString("nombre");
+        int     matriculaAlumno     = extras.getInt("matricula");
+        String  apellidoPaterno     = extras.getString("apellidoPaterno");
 
-        alumno                  = new Alumno(nombreMascota, edadMascota, apellidoPaterno, idMascota);
-
-
-        etEditarEdad            = findViewById(R.id.txtMatricula);
-        etEditarNombre          = findViewById(R.id.txtNombre);
-        txtEditarApellidoP      = findViewById(R.id.txtApellidoP);
-        btnGuardarCambios       = findViewById(R.id.btnGuardar);
+        alumno                      = new Alumno(nombreAlumno, matriculaAlumno, apellidoPaterno, idAlumno);
 
 
-        etEditarEdad.setText(String.valueOf(alumno.getEdad()));
-        etEditarNombre.setText(alumno.getNombre());
-        txtEditarApellidoP.setText(alumno.getApellidoPaterno());
+        txtMatricula                = findViewById(R.id.txtMatricula);
+        txtNombre                   = findViewById(R.id.txtNombre);
+        txtApellidoPaterno          = findViewById(R.id.txtApellidoP);
+        btnGuardarCambios           = findViewById(R.id.btnGuardar);
+
+
+        txtMatricula.setText(String.valueOf(alumno.getMatricula()));
+        txtNombre.setText(alumno.getNombre());
+        txtApellidoPaterno.setText(alumno.getApellidoPaterno());
 
 
         btnGuardarCambios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                etEditarNombre.setError(null);
-                etEditarEdad.setError(null);
-                txtEditarApellidoP.setError(null);
+                txtNombre.setError(null);
+                txtMatricula.setError(null);
+                txtApellidoPaterno.setError(null);
 
-                String nuevoNombre = etEditarNombre.getText().toString();
-                String posibleNuevaEdad = etEditarEdad.getText().toString();
-                String nuevoApellidoPaterno = txtEditarApellidoP.getText().toString();
+                String nuevoNombre          = txtNombre.getText().toString();
+                String nuevaMatricula1      = txtMatricula.getText().toString();
+                String nuevoApellidoPaterno = txtApellidoPaterno.getText().toString();
 
-
-                if (nuevoNombre.isEmpty()) {
-                    etEditarNombre.setError("Escribe el nombre");
-                    etEditarNombre.requestFocus();
+                if (nuevaMatricula1.isEmpty()) {
+                    txtMatricula.setError("Escribe la matricula");
+                    txtMatricula.requestFocus();
                     return;
                 }
-                if (posibleNuevaEdad.isEmpty()) {
-                    etEditarEdad.setError("Escribe la edad");
-                    etEditarEdad.requestFocus();
+                if (nuevoNombre.isEmpty()) {
+                    txtNombre.setError("Escribe el nombre");
+                    txtNombre.requestFocus();
                     return;
                 }
                 if (nuevoApellidoPaterno.isEmpty()) {
-                    txtEditarApellidoP.setError("Escribe el apellido Paterno");
-                    txtEditarApellidoP.requestFocus();
+                    txtApellidoPaterno.setError("Escribe el apellido Paterno");
+                    txtApellidoPaterno.requestFocus();
                     return;
                 }
 
-
-                int nuevaEdad;
+                int nuevaMatricula;
                 try {
-                    nuevaEdad = Integer.parseInt(posibleNuevaEdad);
+                    nuevaMatricula = Integer.parseInt(nuevaMatricula1);
                 } catch (NumberFormatException e) {
-                    etEditarEdad.setError("Escribe un número");
-                    etEditarEdad.requestFocus();
+                    txtMatricula.setError("Escribe un número");
+                    txtMatricula.requestFocus();
                     return;
                 }
 
-                Alumno alumnoConNuevosCambios = new Alumno(nuevoNombre, nuevaEdad,nuevoApellidoPaterno, alumno.getId());
-                int filasModificadas = mascotasController.guardarCambios(alumnoConNuevosCambios);
+                Alumno alumnoConNuevosCambios = new Alumno(nuevoNombre, nuevaMatricula,nuevoApellidoPaterno, alumno.getId());
+                int filasModificadas = alumnoController.guardarCambios(alumnoConNuevosCambios);
                 if (filasModificadas != 1) {
 
                     Toast.makeText(EditarAlumnoActivity.this, "Error guardando cambios. Intente de nuevo.", Toast.LENGTH_SHORT).show();
