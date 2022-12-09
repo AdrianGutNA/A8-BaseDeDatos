@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NuevoAlumno">
+    tools:context=".NuevoAlumnoActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,8 +22,7 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="40dp"
         android:ems="9"
-        android:inputType="textPersonName"
-        android:text="Matricula" />
+        android:inputType="textPersonName" />
 
 
     <TextView
@@ -40,7 +39,7 @@
         android:layout_marginTop="110dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nombre" />
+        />
 
 
 
@@ -50,6 +49,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="160dp"
         android:text="Apellido Paterno:" />
+
     <EditText
         android:id="@+id/txtApellidoP"
         android:layout_width="wrap_content"
@@ -57,8 +57,7 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="180dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Apellido Paterno" />
+        android:inputType="textPersonName" />
 
 
 
@@ -76,48 +75,41 @@
         android:layout_marginTop="250dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Apellido Materno" />
+        />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="380dp"
+        android:layout_marginLeft="360dp"
         android:layout_marginTop="20dp"
         android:text="Sexo:" />
 
-    <RadioButton
-        android:id="@+id/rbtnHombre"
+    <EditText
+        android:id="@+id/txtSexo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="380dp"
-        android:layout_marginTop="30dp"
-        android:text="Hombre" />
-    <RadioButton
-        android:id="@+id/rbtnMujer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="380dp"
-        android:text="Mujer" />
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="40dp"
+        android:ems="6"
+        android:inputType="textPersonName" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="510dp"
+        android:layout_marginLeft="520dp"
         android:layout_marginTop="20dp"
         android:text="Fecha de Nacimiento:" />
 
     <EditText
-        android:id="@+id/tempFecha"
+        android:id="@+id/txtFechaNacimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="510dp"
+        android:layout_marginLeft="520dp"
         android:layout_marginTop="40dp"
         android:ems="8"
-        android:inputType="textPersonName"
-        android:text="FEcha de Nac" />
+        android:inputType="textPersonName" />
 
 
     <TextView

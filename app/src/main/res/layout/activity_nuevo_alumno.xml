@@ -23,6 +23,7 @@
         android:layout_marginLeft="30dp"
         android:text="Matricula:" />
 
+
     <EditText
         android:id="@+id/txtMatricula"
         android:layout_width="wrap_content"
@@ -30,10 +31,7 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="90dp"
         android:ems="9"
-        android:inputType="textPersonName"
-        />
-
-
+        android:inputType="numberSigned" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -104,8 +102,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="380dp"
         android:ems="6"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
 
     <TextView
@@ -123,8 +120,7 @@
         android:layout_marginLeft="200dp"
         android:layout_marginTop="380dp"
         android:ems="8"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
 
     <TextView

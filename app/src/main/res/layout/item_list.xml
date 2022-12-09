@@ -103,21 +103,15 @@
                 android:src="@drawable/usuario"
                 />
 
+
         <Button
             android:id="@+id/btnEditar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
-            android:layout_marginLeft="150dp"
-            android:text="Editar" />
-        <Button
-            android:id="@+id/btnEliminar"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="140dp"
             android:ems="7"
-            android:text="Eliminar" />
+            android:text="Editar" />
 
 
     </androidx.cardview.widget.CardView>

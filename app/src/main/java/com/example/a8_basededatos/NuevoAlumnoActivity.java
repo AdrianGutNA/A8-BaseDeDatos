@@ -29,9 +29,8 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo_alumno);
         getSupportActionBar().setTitle("Nuevo Alumno");
 
+        txtMatricula            = findViewById(R.id.txtMatricula);
         txtNombre               = findViewById(R.id.txtNombre);
-        txtMatricula            = findViewById(R.id.txtMatricula);
-        txtMatricula            = findViewById(R.id.txtMatricula);
         txtApellidoPaterno      = findViewById(R.id.txtApellidoP);
         txtApellidoMaterno      = findViewById(R.id.txtApellidoM);
         txtSexo                 = findViewById(R.id.txtSexo);
@@ -45,8 +44,8 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                txtNombre.setError(null);
                 txtMatricula.setError(null);
+                txtNombre.setError(null);
                 txtApellidoPaterno.setError(null);
                 txtApellidoMaterno.setError(null);
                 txtSexo.setError(null);
@@ -57,7 +56,7 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
                 String apellidoMaterno = txtApellidoMaterno.getText().toString();
                 String sexo = txtSexo.getText().toString();
                 String fechaNacimiento = txtFechaNacimiento.getText().toString();
-                String edadComoCadena = txtMatricula.getText().toString();
+                String matriculaTexto = txtMatricula.getText().toString();
 
                 if ("".equals(nombre)) {
                     txtNombre.setError("Escribe el nombre del Alumno");
@@ -69,7 +68,22 @@ public class NuevoAlumnoActivity extends AppCompatActivity {
                     txtApellidoPaterno.requestFocus();
                     return;
                 }
-                if ("".equals(edadComoCadena)) {
+                if ("".equals(apellidoMaterno)) {
+                    txtApellidoMaterno.setError("Escribe el apellido Materno del Alumno");
+                    txtApellidoMaterno.requestFocus();
+                    return;
+                }
+                if ("".equals(sexo)) {
+                    txtSexo.setError("Escribe el sexo del Alumno");
+                    txtSexo.requestFocus();
+                    return;
+                }
+                if ("".equals(fechaNacimiento)) {
+                    txtSexo.setError("Escribe la fecha de nacimiento del Alumno");
+                    txtSexo.requestFocus();
+                    return;
+                }
+                if ("".equals(matriculaTexto)) {
                     txtMatricula.setError("Escribe la matricula del alumno");
                     txtMatricula.requestFocus();
                     return;

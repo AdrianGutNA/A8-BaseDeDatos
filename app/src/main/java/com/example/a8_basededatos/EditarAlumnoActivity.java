@@ -88,6 +88,16 @@ public class EditarAlumnoActivity extends AppCompatActivity {
                     txtMatricula.requestFocus();
                     return;
                 }
+                int nuevaMatricula;
+                try {
+                    nuevaMatricula = Integer.parseInt(nuevaMatricula1);
+                } catch (NumberFormatException e) {
+                    txtMatricula.setError("Escribe un número");
+                    txtMatricula.requestFocus();
+                    return;
+                }
+
+
                 if (nuevoNombre.isEmpty()) {
                     txtNombre.setError("Escribe el nombre");
                     txtNombre.requestFocus();
@@ -98,13 +108,19 @@ public class EditarAlumnoActivity extends AppCompatActivity {
                     txtApellidoPaterno.requestFocus();
                     return;
                 }
-
-                int nuevaMatricula;
-                try {
-                    nuevaMatricula = Integer.parseInt(nuevaMatricula1);
-                } catch (NumberFormatException e) {
-                    txtMatricula.setError("Escribe un número");
-                    txtMatricula.requestFocus();
+                if (nuevoApellidoMaterno.isEmpty()) {
+                    txtApellidoMaterno.setError("Escribe el apellido Materno");
+                    txtApellidoMaterno.requestFocus();
+                    return;
+                }
+                if (sexo.isEmpty()) {
+                    txtSexo.setError("Escribe el sexo del alumno");
+                    txtSexo.requestFocus();
+                    return;
+                }
+                if (fechaNacimiento.isEmpty()) {
+                    txtFechaNacimiento.setError("Escribe la fecha de nacimiento del alumno");
+                    txtFechaNacimiento.requestFocus();
                     return;
                 }
 

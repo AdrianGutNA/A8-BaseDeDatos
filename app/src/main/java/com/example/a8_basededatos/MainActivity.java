@@ -100,6 +100,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        recyclerView.setHasFixedSize(true);
+        Configuration orientation = new Configuration();
+
+        if(this.recyclerView.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            recyclerView.setLayoutManager(new GridLayoutManager(this,1));
+        }
+        else if(this.recyclerView.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        };
+
     }
 
     @Override
